@@ -14,9 +14,9 @@ class MineAdapter: RecyclerView.Adapter<MineAdapter.MineViewHolder>() {
     private var userList = emptyList<UserDemo>()
 
     inner class MineViewHolder(view: View): RecyclerView.ViewHolder(view){
-        var id = view.findViewById<AppCompatTextView>(R.id.tv)
-        var name = view.findViewById<AppCompatTextView>(R.id.name)
-        var currentData = view.findViewById<ConstraintLayout>(R.id.item_holder)
+        var id = view.findViewById<AppCompatTextView>(R.id.tv)!!
+        var name = view.findViewById<AppCompatTextView>(R.id.name)!!
+        var currentData = view.findViewById<ConstraintLayout>(R.id.item_holder)!!
 
     }
 
@@ -28,7 +28,7 @@ class MineAdapter: RecyclerView.Adapter<MineAdapter.MineViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MineViewHolder, position: Int) {
-        var currentItem = userList[position]
+        val currentItem = userList[position]
         holder.id.text = currentItem.id.toString()
         holder.name.text = currentItem.name
 
@@ -44,7 +44,7 @@ class MineAdapter: RecyclerView.Adapter<MineAdapter.MineViewHolder>() {
         notifyDataSetChanged()
     }
 
-    var listener: ISetDataToUpdateFragment? = null
+    private var listener: ISetDataToUpdateFragment? = null
 
     interface ISetDataToUpdateFragment {
         fun setDataToUpdateFragment(user: UserDemo)
