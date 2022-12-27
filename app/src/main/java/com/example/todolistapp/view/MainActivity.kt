@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.todolistapp.R
 import com.example.todolistapp.databinding.ActivityMainBinding
-import com.example.todolistapp.modelashotik.storage.UserDemo
+import com.example.todolistapp.model.storage.UserDemo
 import com.example.todolistapp.view.framgments.AddUserFragment
 import com.example.todolistapp.view.framgments.HomeScreenFragment
 import com.example.todolistapp.view.framgments.UpdateUserFragment

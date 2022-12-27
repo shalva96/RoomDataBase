@@ -1,12 +1,12 @@
-package com.example.todolistapp.viewmodelashotik
+package com.example.todolistapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.todolistapp.modelashotik.repository.UserRepositoryDemo
-import com.example.todolistapp.modelashotik.storage.UserDataBaseDemo
-import com.example.todolistapp.modelashotik.storage.UserDemo
+import com.example.todolistapp.model.repository.UserRepositoryDemo
+import com.example.todolistapp.model.storage.UserDataBaseDemo
+import com.example.todolistapp.model.storage.UserDemo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -30,6 +30,20 @@ class UserViewModelDemo(application: Application): AndroidViewModel(application)
             userRepository.update(user = user)
         }
     }
+
+    fun delete(user: UserDemo) {
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.delete(user)
+        }
+    }
+
+    fun deleteAllUser() {
+        viewModelScope.launch(Dispatchers.IO) {
+            userRepository.deleteAllUser()
+        }
+    }
+
+
 
 
 }

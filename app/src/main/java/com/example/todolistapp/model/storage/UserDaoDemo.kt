@@ -1,7 +1,8 @@
-package com.example.todolistapp.modelashotik.storage
+package com.example.todolistapp.model.storage
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -19,5 +20,11 @@ interface UserDaoDemo {
 
     @Update
     suspend fun update(user: UserDemo)
+
+    @Delete
+    suspend fun deleteUser(user: UserDemo)
+
+    @Query("DELETE FROM demo_table")
+    suspend fun deleteAllUser()
 
 }

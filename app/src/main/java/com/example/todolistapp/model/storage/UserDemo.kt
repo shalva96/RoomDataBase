@@ -1,4 +1,4 @@
-package com.example.todolistapp.modelashotik.storage
+package com.example.todolistapp.model.storage
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

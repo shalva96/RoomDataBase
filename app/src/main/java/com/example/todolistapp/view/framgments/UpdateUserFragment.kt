@@ -1,20 +1,18 @@
 package com.example.todolistapp.view.framgments
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.todolistapp.R
 import com.example.todolistapp.databinding.FragmentUpdateUserBinding
-import com.example.todolistapp.modelashotik.storage.UserDemo
-import com.example.todolistapp.viewmodel.MainViewModel
-import com.example.todolistapp.viewmodelashotik.UserViewModelDemo
+import com.example.todolistapp.model.storage.UserDemo
+import com.example.todolistapp.viewmodel.UserViewModelDemo
 
 class UpdateUserFragment(private val user: UserDemo) : Fragment() {
 
@@ -42,16 +40,38 @@ class UpdateUserFragment(private val user: UserDemo) : Fragment() {
     private fun initElement() {
         mUserViewModelDemo = ViewModelProvider(this)[UserViewModelDemo::class.java]
         binding.editTv.setText(user.name)
+
     }
 
     private fun listener() {
         binding.backBtn.setOnClickListener {
             listener?.goToMainActivity()
         }
+
+        binding.deleteBtn.setOnClickListener {
+            deleteUser()
+
+        }
+
         binding.saveBtn.setOnClickListener {
             updateDateToDatabase()
             listener?.goToMainActivity()
         }
+    }
+
+    private fun deleteUser() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") { _,_ ->
+            mUserViewModelDemo.delete(user)
+            Toast.makeText(requireContext(), "Successful delete ${user.name}", Toast.LENGTH_LONG).show()
+            listener?.goToMainActivity()
+        }
+        builder.setNegativeButton("No") { _,_ ->
+            listener?.goToMainActivity()
+        }
+        builder.setTitle("Delete ${user.name}")
+        builder.setMessage("Are you sure ${user.name}")
+        builder.create().show()
     }
 
     private fun updateDateToDatabase() {

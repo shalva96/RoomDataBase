@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistapp.R
-import com.example.todolistapp.modelashotik.storage.UserDemo
+import com.example.todolistapp.model.storage.UserDemo
 
 class MineAdapter: RecyclerView.Adapter<MineAdapter.MineViewHolder>() {
 
@@ -24,7 +24,6 @@ class MineAdapter: RecyclerView.Adapter<MineAdapter.MineViewHolder>() {
         return MineViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_holder_demo, parent, false)
         )
-
 
     }
 

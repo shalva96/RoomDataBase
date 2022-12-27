@@ -1,8 +1,8 @@
-package com.example.todolistapp.modelashotik.repository
+package com.example.todolistapp.model.repository
 
 import androidx.lifecycle.LiveData
-import com.example.todolistapp.modelashotik.storage.UserDaoDemo
-import com.example.todolistapp.modelashotik.storage.UserDemo
+import com.example.todolistapp.model.storage.UserDaoDemo
+import com.example.todolistapp.model.storage.UserDemo
 
 class UserRepositoryDemo(private val userDao: UserDaoDemo) {
 
@@ -14,5 +14,13 @@ class UserRepositoryDemo(private val userDao: UserDaoDemo) {
 
     suspend fun update(user: UserDemo) {
         userDao.update(user)
+    }
+
+    suspend fun delete(user: UserDemo) {
+        userDao.deleteUser(user = user)
+    }
+
+    suspend fun deleteAllUser() {
+        userDao.deleteAllUser()
     }
 }
